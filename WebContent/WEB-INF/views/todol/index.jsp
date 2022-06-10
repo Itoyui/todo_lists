@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-        <h3>ToDO　一覧</h3>
+        <h3>ToDo　一覧</h3>
         <ul>
             <c:forEach var="todo" items="${todol}">
             <li>
@@ -14,6 +14,6 @@
             </c:forEach>
         </ul>
 
-        <p><a href="${pageContext.request.contextPath}/new">ToDoを追加する</a></p>
+        <p><a href="${pageContext.request.contextPath}/new">新規ToDo作成</a></p>
     </c:param>
 </c:import>
