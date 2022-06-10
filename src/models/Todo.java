@@ -1,6 +1,6 @@
 package models;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import javax.persistence.Table;
             )
 })
 
-@Table(name = "")
+@Table(name = "todo")
 
 public class Todo {
 
@@ -32,11 +32,11 @@ public class Todo {
     @Column(name = "todo", length = 255, nullable = false)
     private String todo;
 
-    @Column(name = "report_date", nullable = false)
-    private LocalDate reportDate;
+    @Column(name = "created_at", nullable = false)
+    private Timestamp created_at;
 
-    @Column(name = "delete_flag", nullable = false)
-    private Integer deleteFlag;
+    @Column(name = "updated_at", nullable = false)
+    private Timestamp updated_at;
 
     public Integer getId() {
         return id;
@@ -54,20 +54,23 @@ public class Todo {
         this.todo = todo;
     }
 
-    public LocalDate getReportDate() {
-        return reportDate;
+    public Timestamp getCreated_at() {
+        return created_at;
     }
 
-    public void setReportDate(LocalDate reportDate) {
-        this.reportDate = reportDate;
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
     }
 
-    public Integer getDeleteFlag() {
-        return deleteFlag;
+    public Timestamp getUpdated_at() {
+        return updated_at;
     }
 
-    public void setDeleteFlag(Integer deleteFlag) {
-        this.deleteFlag = deleteFlag;
+    public void setUpdated_at(Timestamp updated_at) {
+        this.updated_at = updated_at;
     }
 
-}
+
+    }
+
+
