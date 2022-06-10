@@ -29,8 +29,8 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "todo", length = 255, nullable = false)
-    private String todo;
+    @Column(name = "message", length = 255, nullable = false)
+    private String message;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -46,12 +46,12 @@ public class Todo {
         this.id = id;
     }
 
-    public String getTodo() {
-        return todo;
+    public String getMessage() {
+        return message;
     }
 
-    public void setTodo(String todo) {
-        this.todo = todo;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Timestamp getCreated_at() {
