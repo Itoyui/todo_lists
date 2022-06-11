@@ -10,6 +10,7 @@
         </c:if>
         <h3>ToDo　一覧</h3>
          <p><a href="${pageContext.request.contextPath}/new">新規ToDoを登録する</a></p>
+
         <ul>
             <c:forEach var="todo" items="${todol}">
             <li>
@@ -24,8 +25,23 @@
                 : <c:out value="${todo.message}"></c:out>
 
             </li>
+
             </c:forEach>
         </ul>
+                       <div id="pagination">
+                    （全 ${todol_count} 件) <br />
+                    <c:forEach var="i" begin="1" end="${((todol_count - 1) / 15) + 1 }" step="1">
+                        <c:choose>
+                            <c:when test="${i == page}">
+                                <c:out value="${i}" />&nbsp;
+                            </c:when>
+                            <c:otherwise>
+                                <a href="${pageContext.request.contextPath}/index?page=${i}"><c:out value="${i}" /></a>&nbsp;
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </div>
+
 
 
     </c:param>

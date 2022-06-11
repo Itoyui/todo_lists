@@ -36,11 +36,26 @@ public class IndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        List<Todo> todol = em.createNamedQuery("getAllTodol", Todo.class).getResultList();
+        int page = 1;
+        try {
+            page = Integer.parseInt(request.getParameter("page"));
+        } catch (NumberFormatException e) {}
+
+
+        List<Todo> todol = em.createNamedQuery("getAllTodol", Todo.class)
+                              .setFirstResult(15 * (page -1))
+                              .setMaxResults(15)
+                              .getResultList();
+
+        long todol_count = (long)em.createNamedQuery("getTodolCount", Long.class)
+                                      .getSingleResult();
 
         em.close();
 
         request.setAttribute("todol", todol);
+        request.setAttribute("todol_count", todol_count);
+        request.setAttribute("page", page);
+
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush",request.getSession().getAttribute("flush"));

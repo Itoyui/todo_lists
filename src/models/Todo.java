@@ -16,6 +16,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name = "getAllTodol",
             query = "SELECT m FROM Todo AS m ORDER BY m.id DESC"
+            ),
+    @NamedQuery(
+            name = "getTodolCount",
+            query = "SELECT COUNT(m) FROM Todo AS m"
             )
 })
 
