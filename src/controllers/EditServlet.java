@@ -41,7 +41,9 @@ public class EditServlet extends HttpServlet {
         request.setAttribute("todo", m);
         request.setAttribute("_token", request.getSession().getId());
 
+        if (m != null) {
         request.getSession().setAttribute("todo_id",m.getId());
+        }
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/todol/edit.jsp");
         rd.forward(request, response);
